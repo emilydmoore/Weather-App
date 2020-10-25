@@ -17,6 +17,10 @@ li {
   margin-left: 7px;
 }
 
+.weather-description {
+  text-transform: capitalize;
+}
+
 .weather-app {
   font-family: "Raleway", sans-serif;
   border: 1px solid gray;
