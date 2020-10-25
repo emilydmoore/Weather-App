@@ -33,6 +33,11 @@ li {
   background-size: cover;
 }
 
+.source-code {
+  margin-left: 157px;
+  font-size: small;
+}
+
 .search {
   padding-right: 0px;
 }
