@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+
+    <link href="src/styles.css" rel="stylesheet" class="text/css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="weather-app">
+
+            <form id="city-search-form">
+                <div class="row">
+                    <div class="col-9 search">
+                        <input type="search" placeholder="enter city here" class="form-control shadow-sm border-0"
+                            autocomplete="off" autofocus="on" id="city-input" />
+                    </div>
+                    <div class="col-3 enter">
+
+                        <input type="submit" value="search" class="form-control btn btn-primary shadow-sm" />
+                    </div>
+                </div>
+            </form>
+
+
+            <h1>Little Rock, AR, USA</h1>
+
+            <ul>
+                <li id="current-day">Sun 9/27</li>
+                <li>Partly Cloudy</li>
+            </ul>
+            <div class="row">
+                <div class="col-6">
+
+
+                    <img src="https://img.icons8.com/color/96/000000/partly-cloudy-day.png" alt="partly-cloudy-day"
+                        class="weather-today" />
+                    <div class="float-left">
+                        <span class="temperature" id="current-temperature"> 70</span>
+                        <span class="units">
+                            <a href="#" id="fahrenheit-link">˚F</a>
+                            | <a href="#" id="celcius-link">˚C</a>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <ul class="phw">
+                        <li>Precipitation: 0%</li>
+                        <li>Humidity: 69%</li>
+                        <li>Wind: NE 8mph</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="card-text refresh">
+                Last updated 3 mins ago
+                <button type="button" class="btn btn-primary refresh">Refresh</button>
+            </p>
+
+            <div class="row">
+                <div class="col-md">
+                    <ul class="mon">
+                        <center>
+                            <li>Monday</li>
+                            <li>9/28</li>
+                            <li>
+                                <img src="https://img.icons8.com/color/48/000000/partly-cloudy-day.png"
+                                    alt="partly-cloudy-day" />
+                            </li>
+                            <li>
+                                78˚F
+                                <br />
+                                <small> 62˚F</small>
+                            </li>
+                    </ul>
+                    </center>
+                </div>
+
+                <div class="col-md">
+                    <ul class="tues">
+                        <center>
+                            <li>Tuesday</li>
+                            <li>9/29</li>
+                            <li>
+                                <img src="https://img.icons8.com/color/48/000000/rain.png" />
+                            </li>
+                            <li>
+                                66˚F
+                                <br />
+                                <small> 60˚F</small>
+                            </li>
+                    </ul>
+                    </center>
+                </div>
+
+                <div class="col-md">
+                    <ul class="wed">
+                        <center>
+                            <li>Wednesday</li>
+                            <li>9/30</li>
+                            <li>
+                                <img src="https://img.icons8.com/color/48/000000/rain.png" />
+                            </li>
+                            <li>
+                                67˚F
+                                <br />
+                                <small> 60˚F </small>
+                            </li>
+                    </ul>
+                    </center>
+                </div>
+                <div class="col-md">
+                    <ul class="thurs">
+                        <center>
+                            <li>Thursday</li>
+                            <li>10/1</li>
+                            <li>
+                                <img src="https://img.icons8.com/color/48/000000/rain.png" />
+                            </li>
+                            <li>
+                                67˚F
+                                <br />
+                                <small> 60˚F</small>
+                            </li>
+                    </ul>
+                    </center>
+                </div>
+                <div class="col-md">
+                    <ul class="fri">
+                        <center>
+                            <li>Friday</li>
+                            <li>10/2</li>
+                            <li>
+                                <img src="https://img.icons8.com/color/48/000000/rain.png" />
+                            </li>
+                            <li>
+                                67˚F
+                                <br />
+                                <small> 60˚F</small>
+                            </li>
+                        </center>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="src/index.js"></script>
+</body>
+
+</html>
