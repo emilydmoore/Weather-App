@@ -27,31 +27,61 @@ let date = new Date();
 
 day.innerHTML = formatDate(date);
 
-function displayCity(event) {
-  event.preventDefault();
-  let cityInput = document.querySelector("#city-input");
-
-  let h1 = document.querySelector("h1");
-  h1.innerHTML = cityInput.value;
-}
-let citySearchForm = document.querySelector("#city-search-form");
-citySearchForm.addEventListener("submit", displayCity);
-
-function convertToCelcius(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#current-temperature");
-
-  temperatureElement.innerHTML = 17;
+function searchCity(city) {
+  let apiKey = "30d908cd66a42b7d4c24ca6910b237cd";
+  let units = "imperial";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(showWeather);
 }
 
-let celciusLink = document.querySelector("#celcius-link");
-celciusLink.addEventListener("click", convertToCelcius);
+function showWeather(response) {
+  document.querySelector("#city").innerHTML = response.data.name;
 
-function convertToFahrenheit(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#current-temperature");
-  temperatureElement.innerHTML = 66;
+  document.querySelector("#temperature").innerHTML = Math.round(
+    response.data.main.temp
+  );
+
+  document.querySelector("#weather-description").innerHTML =
+    response.data.weather[0].description;
+
+  document.querySelector("#feels-like").innerHTML = Math.round(
+    response.data.main.feels_like
+  );
+
+  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+
+  document.querySelector("#wind").innerHTML = Math.round(
+    response.data.wind.speed
+  );
 }
 
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", convertToFahrenheit);
+function search(event) {
+  event.preventDefault();
+  let units = "imperial";
+  let city = document.querySelector("#city-input").value;
+  let apiKey = "30d908cd66a42b7d4c24ca6910b237cd";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(showWeather);
+}
+
+function searchLocation(location) {
+  let lat = location.coords.latitude;
+  let lon = location.coords.longitude;
+  let units = "imperial";
+  let apiKey = "30d908cd66a42b7d4c24ca6910b237cd";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
+  axios.get(apiUrl).then(showWeather);
+}
+
+function getCurrentLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(searchLocation);
+}
+
+let form = document.querySelector("#city-search-form");
+form.addEventListener("submit", search);
+
+let currentLocationButton = document.querySelector("#current-location-button");
+currentLocationButton.addEventListener("click", getCurrentLocation);
+
+searchCity("Little Rock"); //searches for city when page loads
