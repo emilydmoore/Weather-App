@@ -6,8 +6,8 @@
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather App</title>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Weather App</title>
 
     <link href="styles.css" rel="stylesheet" class="text/css" />
 </head>
@@ -27,18 +27,19 @@
                         <input type="submit" value="search" class="form-control btn btn-primary shadow-sm" />
                     </div>
                     <div class="col-3 current">
-                    
-                        <button type="button" class="btn btn-success" id="current-location-button">current location</button>
+
+                        <button type="button" class="btn btn-success" id="current-location-button">current
+                            location</button>
                     </div>
                 </div>
             </form>
 
 
-            <h1>Little Rock, AR, USA</h1>
+            <h1 id="city">Little Rock, AR, USA</h1>
 
             <ul>
                 <li id="current-day">Sun 9/27</li>
-                <li class="weather-description">Partly Cloudy</li>
+                <li class="weather-description" id="weather-description"> Partly Cloudy</li>
             </ul>
             <div class="row">
                 <div class="col-6">
@@ -49,27 +50,28 @@
                     <div class="float-left">
                         <span class="temperature" id="temperature"> </span>
                         <span class="units"> ˚F
-                        
+
                         </span>
                     </div>
                 </div>
-<div class="col-6">
-    <ul class="phw">
-        <li>Feels like:
-            <span id="feels-like">
 
-            </span> 65˚F
-        </li>
-        <li>Humidity:
-            <span id="humidity">
-            </span> 60%</li>
-        <li>Wind:
-            <span id="wind">
+                <div class="col-6">
+                    <ul class="phw">
+                        <li>Feels like:
+                            <span id="feels-like">
 
-            </span> 5 mph</li>
-    </ul>
-</div>
-</div>
+                            </span>˚F
+                        </li>
+                        <li>Humidity:
+                            <span id="humidity">
+                            </span> %</li>
+                        <li>Wind:
+                            <span id="wind">
+
+                            </span> mph</li>
+                    </ul>
+                </div>
+            </div>
 
             <p class="card-text refresh">
                 Last updated 3 mins ago
@@ -163,7 +165,6 @@
             </div>
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 
