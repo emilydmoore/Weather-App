@@ -30,12 +30,16 @@ li {
 .weather-app {
   border: 1px solid gray;
   padding: 20px;
-  margin: 20px auto;
-  max-width: 700px;
+
   border-radius: 6px;
   background-image: url(https://images.unsplash.com/photo-1514542124776-b1401b7dd173?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=868&q=80),
     linear-gradient(-225deg, #5d9fff 0%, #b8dcff 48%, #6bbbff 100%);
   background-size: cover;
+}
+
+.weather-app-wrapper {
+  margin: 20px auto;
+  max-width: 700px;
 }
 
 .search {
@@ -49,9 +53,6 @@ li {
 
 .current {
   padding-left: 0px;
-}
-.source-code {
-  margin-left: 117px;
 }
 
 .temperature {

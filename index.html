@@ -2,18 +2,20 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+   
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>Weather App</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
 
     <link href="styles.css" rel="stylesheet" class="text/css" />
 </head>
 
 <body>
     <div class="container">
+        <div class="weather-app-wrapper">
         <div class="weather-app">
 
             <form id="city-search-form">
@@ -163,14 +165,16 @@
                     </ul>
                 </div>
             </div>
-        </div>
+            </div>
+            <small class="source-code">
+                <a href="https://github.com/emilydmoore/Weather-App" target="_blank"> Open Source code</a> by Emily Moore
+            </small>
+        
     
-<small class="source-code">
-    <a href="https://github.com/emilydmoore/Weather-App" target="_blank"> Open Source code</a> by Emily Moore
-    </small>
 
+</div>
     </div>
-    
+
     <script src="script.js"></script>
 
 </body>
