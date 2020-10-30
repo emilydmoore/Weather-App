@@ -23,7 +23,7 @@ li {
   margin-left: 7px;
 }
 
-.weather-description {
+.weather-description::first-letter {
   text-transform: capitalize;
 }
 
