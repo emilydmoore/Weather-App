@@ -1,4 +1,5 @@
-function formatDate(date) {
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
   let days = [
     "Sunday",
     "Monday",
@@ -10,6 +11,11 @@ function formatDate(date) {
   ];
 
   let currentDay = days[date.getDay()];
+  return `Today | ${currentDay} ${formatHours(timestamp)}`;
+}
+
+function formatHours(timestamp) {
+  let date = new Date(timestamp);
   let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
@@ -19,13 +25,8 @@ function formatDate(date) {
     minutes = `0${minutes}`;
   }
 
-  return `Today | ${currentDay} ${hours}:${minutes}`;
+  return `${hours}:${minutes}`;
 }
-
-let day = document.querySelector("#current-day");
-let date = new Date();
-
-day.innerHTML = formatDate(date);
 
 function searchCity(city) {
   let apiKey = "30d908cd66a42b7d4c24ca6910b237cd";
@@ -52,6 +53,15 @@ function showWeather(response) {
 
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
+  );
+
+  let dateElement = document.querySelector("#current-day");
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
+
+  let iconElement = document.querySelector("#weather-icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
 }
 
