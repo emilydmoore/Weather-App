@@ -37,27 +37,23 @@ function searchCity(city) {
 
 function showWeather(response) {
   document.querySelector("#city").innerHTML = response.data.name;
-
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.main.temp
   );
-
   document.querySelector("#weather-description").innerHTML =
     response.data.weather[0].description;
-
   document.querySelector("#feels-like").innerHTML = Math.round(
     response.data.main.feels_like
   );
-
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
 
+  fahrenheitTemperature = response.data.main.temp;
+
   let dateElement = document.querySelector("#current-day");
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
-
   let iconElement = document.querySelector("#weather-icon");
   iconElement.setAttribute(
     "src",
@@ -94,5 +90,26 @@ form.addEventListener("submit", search);
 
 let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", getCurrentLocation);
+
+let fahrenheitTemperature = null;
+
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  let celsiusTemperature = ((60 - 32) * 5) / 9;
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
+function displayFahrenheitTemperature(event) {
+  event.preventDefault;
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 searchCity("Little Rock"); //searches for city when page loads
