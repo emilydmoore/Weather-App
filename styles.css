@@ -78,3 +78,12 @@ li {
   margin-left: 3px;
   padding: 4px 6px;
 }
+
+.weather-description .active {
+  color: #1e2018;
+  cursor: default;
+}
+
+.weather-description .active:hover {
+  text-decoration: none;
+}
