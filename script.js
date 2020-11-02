@@ -148,4 +148,10 @@ let fahrenheitTemperature = null;
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
+function reload() {
+  reload = location.reload();
+}
+let refreshButton = document.querySelector("#refresh-page-button");
+refreshButton.addEventListener("click", reload, false);
+
 searchCity("Little Rock");
