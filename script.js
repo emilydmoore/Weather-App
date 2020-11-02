@@ -28,13 +28,6 @@ function formatHours(timestamp) {
   return `${hours}:${minutes}`;
 }
 
-function searchCity(city) {
-  let apiKey = "30d908cd66a42b7d4c24ca6910b237cd";
-  let units = "imperial";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-  axios.get(apiUrl).then(showWeather);
-}
-
 function showWeather(response) {
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = Math.round(
@@ -62,13 +55,51 @@ function showWeather(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
-function search(event) {
-  event.preventDefault();
-  let units = "imperial";
-  let city = document.querySelector("#city-input").value;
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = null;
+  let forecast = null;
+
+  for (let index = 0; index < 6; index++) {
+    let forecast = response.data.list[index];
+
+    forecastElement.innerHTML += ` 
+  <div class="col-2">
+ <center>
+                    <h3>
+                  ${formatHours(forecast.dt * 1000)}
+                  </h3>
+                     <img src="http://openweathermap.org/img/wn/${
+                       forecast.weather[0].icon
+                     }@2x.png"
+                                    alt="" />
+                                    <div class"weather-forecast-temperature">
+                            <strong>
+                            <small>
+                                H: ${Math.round(forecast.main.temp_max)}˚
+                                </strong>
+                                L: ${Math.round(forecast.main.temp_min)}˚
+                            </small>
+                    </center>
+                    </div>
+                    </div>`;
+  }
+}
+
+function searchCity(city) {
   let apiKey = "30d908cd66a42b7d4c24ca6910b237cd";
+  let units = "imperial";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showWeather);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
+function search(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  searchCity(cityInputElement.value);
 }
 
 function searchLocation(location) {
@@ -91,8 +122,6 @@ form.addEventListener("submit", search);
 let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", getCurrentLocation);
 
-let fahrenheitTemperature = null;
-
 function displayCelsiusTemperature(event) {
   event.preventDefault();
   let celsiusTemperature = ((60 - 32) * 5) / 9;
@@ -114,7 +143,9 @@ function displayFahrenheitTemperature(event) {
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 
+let fahrenheitTemperature = null;
+
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
-searchCity("Little Rock"); //searches for city when page loads
+searchCity("Little Rock");
