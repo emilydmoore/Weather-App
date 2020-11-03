@@ -124,7 +124,7 @@ currentLocationButton.addEventListener("click", getCurrentLocation);
 
 function displayCelsiusTemperature(event) {
   event.preventDefault();
-  let celsiusTemperature = ((60 - 32) * 5) / 9;
+  let celsiusTemperature = ((fahrenheitTemperature - 32) * 5) / 9;
   /// remove active link from the fahrenheit link
   celsiusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
