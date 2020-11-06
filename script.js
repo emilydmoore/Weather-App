@@ -102,13 +102,17 @@ function search(event) {
   searchCity(cityInputElement.value);
 }
 
-function searchLocation(location) {
-  let lat = location.coords.latitude;
-  let lon = location.coords.longitude;
+function searchLocation(position) {
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
   let units = "imperial";
   let apiKey = "30d908cd66a42b7d4c24ca6910b237cd";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showWeather);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
+
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function getCurrentLocation(event) {
