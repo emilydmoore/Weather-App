@@ -1,3 +1,8 @@
+@viewport {
+  width: device-width;
+  zoom: 1;
+}
+
 body {
   font-family: "Raleway", sans-serif;
   font-weight: 500;
